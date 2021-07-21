@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/client": "^3.3.21",
+    "apollo": "^2.33.4",
     "apollo-client": "^2.6.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",

@@ -10,7 +10,7 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 
 
-function App() {
+/*function App() {
 
 
   return (<Router>
@@ -31,5 +31,25 @@ function App() {
 }
 
 export default App;
+*/
 
 
+const App = () => {
+  return (
+    <div className="center w85">
+      <div className="ph3 pv1 background-gray">
+        <Switch>
+          <Route exact path="/" component={LinkList} />
+          <Route
+            exact
+            path="/create"
+            component={CreateLink}
+          />
+          <Route exact path="/login" component={Login} />
+        </Switch>
+      </div>
+    </div>
+  );
+};
+
+export default App;
