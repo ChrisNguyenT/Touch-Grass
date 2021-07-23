@@ -1,4 +1,7 @@
-import { gql } from "apollo-server-express";
+//import { gql } from "apollo-server-express";
+const { gql } = require ('apollo-server-express');
+
+
 const typeDefs = gql`
   type User {
     _id: ID
@@ -29,4 +32,5 @@ const typeDefs = gql`
     addDestination(destination: DestinationInput): Destination
     addUser(user: UserInput): User
   }`;
-export default typeDefs;
+
+module.exports = typeDefs;

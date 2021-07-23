@@ -1,3 +1,5 @@
+const { resolvers } = require(".");
+
 const resolvers = {
     Query: {
       getDestination: async (parent, args, context) =>
@@ -17,4 +19,5 @@ const resolvers = {
       await context.models.Destination.mutations.addUser(JSON.parse(JSON.stringify(args.user))),
     },
   };
-  export default resolvers;
+  
+module.exports = resolvers;

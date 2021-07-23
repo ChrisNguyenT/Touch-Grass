@@ -1,13 +1,3 @@
-
-/*
-import express from "express";
-import { ApolloServer } from "apollo-server-express";
-import typeDefs from "../schema/typeDefs";
-import resolvers from "../schema/resolvers";
-import generateDestinationModel from "../schema/models";
-import dbConnection from "./db/connection";
-import cors from "cors"*/
-
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
@@ -22,46 +12,25 @@ const server = new ApolloServer({
     resolvers,
     context: authMiddleware,
 });
-const path = require("path");
 
-const startApolloServer = async () => {
-  await dbConnection()
-    .then((result) => console.log(result))
-    .catch((err) => console.log(err));
-  const app = express();
+const app = express();
 
-  app.use(cors())
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    subscriptions: { path: "/subscriptions" },
-    context: ({ req }) => {
-      return {
-        models: {
-          Destination: generateDestinationModel(),
-        },
-      };
-    },
-  });
-  await server.start();
-  server.applyMiddleware({ app });
+server.applyMiddleware({ app });
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.json());
+// Serve up static assets - IF WE NEED
+// app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
-  app.use(express.static('./client/build'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build/index.html'));
-  });
- 
-  await new Promise((resolve) => app.listen({ port: 3000 }, resolve));
-  console.log(`Server ready at http://localhost:3000${server.graphqlPath}`);
-  console.log(
-` Subscriptions ready at ws://localhost:3000${server.subscriptionsPath}`
-);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
-  return { server, app };
-};
+// (path.join(publicPath, 'index.html')); can do as well
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+})
 
-
-startApolloServer();
+db.once('open', () => {
+  app.listen(PORT, () => console.log(`🌍 GraphQL is now listening on localhost:${PORT}${server.graphqlPath}`));
+});
