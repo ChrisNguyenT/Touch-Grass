@@ -32,5 +32,5 @@ app.get('*', (req, res) => {
 })
 
 db.once('open', () => {
-  app.listen(PORT, () => console.log(`🌍 GraphQL is now listening on localhost:${PORT}${server.graphqlPath}`));
+  app.listen(PORT, () => console.log(`🌍GraphQL is now listening on localhost:${PORT}${server.graphqlPath}`));
 });
