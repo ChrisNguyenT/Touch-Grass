@@ -12,6 +12,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
+import Home from "./components/Home";
 //import Auth from '../src/utils/auth';
 
 const httpLink = createHttpLink({
@@ -37,7 +38,7 @@ const client = new ApolloClient({
 });
 
 function App() {
-
+  let url = 'https://www.gofundme.com/f/touchgrass?utm_source=customer&utm_medium=copy_link&utm_campaign=p_cf+share-flow-1';
 
   return (<Router>
     <div className="App">
@@ -46,10 +47,13 @@ function App() {
         <div className="auth-inner">
           <Switch>
             <Route exact path='/' component={Login} />
+            <Route exact path='/Home' component={Home} />
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
           </Switch>
           <Footer/>
+          
+          
         </div>
       </div>
     </div></Router>
