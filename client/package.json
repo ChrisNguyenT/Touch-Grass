@@ -1,31 +1,27 @@
 {
-  "name": "client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "00-practice-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "apollo-client": "^2.6.10",
-    "axios": "^0.21.1",
-    "bootstrap": "^5.0.2",
-    "graphql": "^15.5.1",
-    "jwt-decode": "^3.1.2",
-    "leaflet": "^1.7.1",
-    "node-sass": "^6.0.1",
-    "react": "^17.0.2",
-    "react-bootstrap": "^1.6.1",
-    "react-dom": "^17.0.2",
-    "react-leaflet": "^3.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "web-vitals": "^2.1.0"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
