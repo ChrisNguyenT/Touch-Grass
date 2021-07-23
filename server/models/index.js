@@ -1,5 +1,5 @@
-import Destination from "../../db/models/DestinationModel";
-import User from "../../db/models/UserModel";
+import Destination from "../db/models/DestinationModel";
+import User from "../db/models/UserModel";
 
 const generateDestinationModel = () => ({
     queries: {

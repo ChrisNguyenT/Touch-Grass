@@ -1,12 +1,29 @@
+
+/*
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import typeDefs from "../schema/typeDefs";
 import resolvers from "../schema/resolvers";
 import generateDestinationModel from "../schema/models";
 import dbConnection from "./db/connection";
-import cors from "cors"
+import cors from "cors"*/
 
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+
+const { typeDefs, resolvers } = require ('./schemas');
+const { authMiddleware } = require('./utils/auth');
+const db = require('./config/connection');
+
+const PORT = process.env.PORT || 3001;
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware,
+});
 const path = require("path");
+
 const startApolloServer = async () => {
   await dbConnection()
     .then((result) => console.log(result))
