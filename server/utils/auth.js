@@ -8,4 +8,11 @@ module.exports = {
     const payload = { email, name, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
+  authMiddleware: function ({req}) {
+    let token = req.body.token || req.query.token || req.headers.authorization;
+
+    
+   return req;
+  },
 };
+
