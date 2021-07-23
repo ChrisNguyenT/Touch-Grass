@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import schema from spoonacular
-const recipeSchema = require('./Recipe');
+
 
 const userSchema = new Schema(
   {
@@ -31,8 +30,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set recipes to be an array of data
-    savedRecipes: [recipeSchema],
+
   },
   // set this to use virtual below
   {
@@ -57,9 +55,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('recipeCount').get(function () {
-  return this.savedRecipes.length;
-});
 
 const User = model('User', userSchema);
 
